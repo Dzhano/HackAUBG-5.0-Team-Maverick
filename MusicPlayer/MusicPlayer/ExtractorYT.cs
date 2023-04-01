@@ -23,16 +23,15 @@ namespace MusicPlayer
 					string PaginaWebYoutube = wc.DownloadString(string.Concat("https://www.youtube.com/watch?v=", id));
 
 					// On the previously downloaded page, we located a Javascript variable called "ytInitialPlayerResponse"
-					// To do this, we simply find the starting position of the string "ytInitialPlayerResponse"
-					// and the position of the first occurrence of the string "};"
-					int InicioPlayerResponse = PaginaWebYoutube.IndexOf("ytInitialPlayerResponse") + "ytInitialPlayerResponse".Length + 3;
-                    int FimPlayerResponse = PaginaWebYoutube.IndexOf("};", InicioPlayerResponse) + 1;
+					// To do this, we simply find the starting position of the string "ytInitialPlayerResponse" and the position of the first occurrence of the string "};"
+					int InitialPlayerResponse = PaginaWebYoutube.IndexOf("ytInitialPlayerResponse") + "ytInitialPlayerResponse".Length + 3;
+                    int FinalPlayerResponse = PaginaWebYoutube.IndexOf("};", InitialPlayerResponse) + 1;
 
                     string ytInitialPlayerResponse = "";
-                    if (InicioPlayerResponse > -1 && FimPlayerResponse > -1)
+                    if (InitialPlayerResponse > -1 && FinalPlayerResponse > -1)
                     {
-                        int len = FimPlayerResponse - InicioPlayerResponse;
-                        ytInitialPlayerResponse = PaginaWebYoutube.Substring(InicioPlayerResponse, len);
+                        int len = FinalPlayerResponse - InitialPlayerResponse;
+                        ytInitialPlayerResponse = PaginaWebYoutube.Substring(InitialPlayerResponse, len);
 
                     }
 
@@ -73,10 +72,10 @@ namespace MusicPlayer
                     Engine.Evaluate(FuncaoJavascriptPegarAudio);
 
 					// Use the Call Global Function<To Jurassic function with string return to get the audio format information
-					string PrimeiroFormatoDeAudio = (Engine.CallGlobalFunction<string>("getFirstAudio"));
+					string PrimaryAudioFormat = (Engine.CallGlobalFunction<string>("getFirstAudio"));
 
 					// Convert string from audio format to dictionary
-					Dictionary<string, string> CipherDict = Utils.cifraToDict(PrimeiroFormatoDeAudio);
+					Dictionary<string, string> CipherDict = Utils.cifraToDict(PrimaryAudioFormat);
 
 					// Checks if the dictionary has been split into 3 (if not = the audio information string does not need to be unscrambled)
 					if (CipherDict.Count == 3)
@@ -144,7 +143,7 @@ namespace MusicPlayer
 					// If the dictionary does not contain 3 entries, it probably means that ytInitialPlayerResponse returned the audio URL in an unobfuscated state, so the descrambling process is not necessary. 
 					else
 					{
-                        return Uri.UnescapeDataString(PrimeiroFormatoDeAudio);
+                        return Uri.UnescapeDataString(PrimaryAudioFormat);
                     }
                 }
             }
