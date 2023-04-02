@@ -37,6 +37,7 @@
 			this.button3 = new System.Windows.Forms.Button();
 			this.button4 = new System.Windows.Forms.Button();
 			this.AnswerFeedback = new System.Windows.Forms.Label();
+			this.DownloadPlaylist = new System.Windows.Forms.Button();
 			this.SuspendLayout();
 			// 
 			// Songs
@@ -66,12 +67,14 @@
 			this.PlaySong.Text = "Play a random song";
 			this.PlaySong.UseVisualStyleBackColor = false;
 			this.PlaySong.Click += new System.EventHandler(this.PlaySong_Click);
+			this.PlaySong.MouseLeave += new System.EventHandler(this.PlaySong_MouseLeave);
+			this.PlaySong.MouseHover += new System.EventHandler(this.PlaySong_MouseHover);
 			// 
 			// Greetings
 			// 
 			this.Greetings.AutoSize = true;
 			this.Greetings.Font = new System.Drawing.Font("Microsoft Uighur", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Greetings.Location = new System.Drawing.Point(28, 455);
+			this.Greetings.Location = new System.Drawing.Point(28, 428);
 			this.Greetings.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.Greetings.Name = "Greetings";
 			this.Greetings.Size = new System.Drawing.Size(125, 40);
@@ -83,7 +86,7 @@
 			this.TheHUB.AutoSize = true;
 			this.TheHUB.Font = new System.Drawing.Font("MS Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.TheHUB.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-			this.TheHUB.Location = new System.Drawing.Point(139, 464);
+			this.TheHUB.Location = new System.Drawing.Point(161, 437);
 			this.TheHUB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.TheHUB.Name = "TheHUB";
 			this.TheHUB.Size = new System.Drawing.Size(86, 20);
@@ -104,6 +107,8 @@
 			this.button1.TabIndex = 8;
 			this.button1.UseVisualStyleBackColor = false;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
+			this.button1.MouseLeave += new System.EventHandler(this.button1_MouseLeave);
+			this.button1.MouseHover += new System.EventHandler(this.button1_MouseHover);
 			// 
 			// button2
 			// 
@@ -116,6 +121,8 @@
 			this.button2.TabIndex = 9;
 			this.button2.UseVisualStyleBackColor = false;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
+			this.button2.MouseLeave += new System.EventHandler(this.button2_MouseLeave);
+			this.button2.MouseHover += new System.EventHandler(this.button2_MouseHover);
 			// 
 			// button3
 			// 
@@ -128,6 +135,8 @@
 			this.button3.TabIndex = 10;
 			this.button3.UseVisualStyleBackColor = false;
 			this.button3.Click += new System.EventHandler(this.button3_Click);
+			this.button3.MouseLeave += new System.EventHandler(this.button3_MouseLeave);
+			this.button3.MouseHover += new System.EventHandler(this.button3_MouseHover);
 			// 
 			// button4
 			// 
@@ -140,18 +149,35 @@
 			this.button4.TabIndex = 11;
 			this.button4.UseVisualStyleBackColor = false;
 			this.button4.Click += new System.EventHandler(this.button4_Click);
+			this.button4.MouseLeave += new System.EventHandler(this.button4_MouseLeave);
+			this.button4.MouseHover += new System.EventHandler(this.button4_MouseHover);
 			// 
 			// AnswerFeedback
 			// 
 			this.AnswerFeedback.AutoSize = true;
 			this.AnswerFeedback.BackColor = System.Drawing.Color.Transparent;
-			this.AnswerFeedback.Font = new System.Drawing.Font("Bookman Old Style", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.AnswerFeedback.Location = new System.Drawing.Point(289, 339);
+			this.AnswerFeedback.Font = new System.Drawing.Font("Bookman Old Style", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+			this.AnswerFeedback.Location = new System.Drawing.Point(72, 338);
 			this.AnswerFeedback.Name = "AnswerFeedback";
-			this.AnswerFeedback.Size = new System.Drawing.Size(18, 41);
+			this.AnswerFeedback.Size = new System.Drawing.Size(15, 36);
 			this.AnswerFeedback.TabIndex = 12;
 			this.AnswerFeedback.Text = "\r\n";
 			this.AnswerFeedback.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			// 
+			// DownloadPlaylist
+			// 
+			this.DownloadPlaylist.BackColor = System.Drawing.Color.DarkTurquoise;
+			this.DownloadPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+			this.DownloadPlaylist.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.DownloadPlaylist.Location = new System.Drawing.Point(509, 411);
+			this.DownloadPlaylist.Name = "DownloadPlaylist";
+			this.DownloadPlaylist.Size = new System.Drawing.Size(192, 73);
+			this.DownloadPlaylist.TabIndex = 13;
+			this.DownloadPlaylist.Text = "Download song playlist";
+			this.DownloadPlaylist.UseVisualStyleBackColor = false;
+			this.DownloadPlaylist.Click += new System.EventHandler(this.DownloadPlaylist_Click);
+			this.DownloadPlaylist.MouseLeave += new System.EventHandler(this.DownloadPlaylist_MouseLeave);
+			this.DownloadPlaylist.MouseHover += new System.EventHandler(this.DownloadPlaylist_MouseHover);
 			// 
 			// MusicPlayer
 			// 
@@ -159,6 +185,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlLight;
 			this.ClientSize = new System.Drawing.Size(1067, 587);
+			this.Controls.Add(this.DownloadPlaylist);
 			this.Controls.Add(this.AnswerFeedback);
 			this.Controls.Add(this.button4);
 			this.Controls.Add(this.button3);
@@ -186,6 +213,7 @@
 		private System.Windows.Forms.Button button3;
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.Label AnswerFeedback;
+		private System.Windows.Forms.Button DownloadPlaylist;
 	}
 }
 
