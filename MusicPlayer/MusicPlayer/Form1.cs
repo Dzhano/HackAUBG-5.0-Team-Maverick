@@ -25,6 +25,7 @@ namespace MusicPlayer
 		private bool timeOver;
 		private int index;
 		private Random random;
+		private int chance;
 		private bool clickedAgain;
 
 		private bool button1True;
@@ -38,6 +39,7 @@ namespace MusicPlayer
 		{
 			InitializeComponent();
 			random = new Random();
+			chance = 0;
 			index = 0;
 
 			Player = new WindowsMediaPlayer();
@@ -78,10 +80,6 @@ namespace MusicPlayer
 
 			timeOver = false;
 			clickedAgain = false;
-			button1True = false;
-			button2True = false;
-			button3True = false;
-			button4True = false;
 			missed = false;
 			gotItRight = false;
 			this.AnswerFeedback.Text = string.Empty;
@@ -89,13 +87,33 @@ namespace MusicPlayer
 			this.button2.Text =	string.Empty;
 			this.button3.Text =	string.Empty;
 			this.button4.Text = string.Empty;
+			switch (chance)
+			{
+				case 0:
+					this.button1.BackColor = System.Drawing.Color.GreenYellow;
+					button1True = false;
+					break;
+				case 1:
+					this.button2.BackColor = System.Drawing.Color.GreenYellow;
+					button2True = false;
+					break;
+				case 2:
+					this.button3.BackColor = System.Drawing.Color.GreenYellow;
+					button3True = false;
+					break;
+				case 3:
+					this.button4.BackColor = System.Drawing.Color.GreenYellow;
+					button4True = false;
+					break;
+			}
 
 			Task task1 = Task.Run(() => Player.controls.play());
 
 			await Task.WhenAll(task1, Task.Delay(35000));
 			Player.controls.stop();
 
-			switch (random.Next(0, 4))
+			chance = random.Next(0, 4);
+			switch (chance)
 			{
 				case 0:
 					this.button1.Text = NameFix(musics[index].Name);
@@ -129,7 +147,22 @@ namespace MusicPlayer
 
 			await Task.Delay(20000);
 			timeOver = true;
-			Songs.Items.Add(musics[index].Name);
+			switch (chance)
+			{
+				case 0:
+					this.button1.BackColor = System.Drawing.Color.MediumOrchid;
+					break;
+				case 1:
+					this.button2.BackColor = System.Drawing.Color.MediumOrchid;
+					break;
+				case 2:
+					this.button3.BackColor = System.Drawing.Color.MediumOrchid;
+					break;
+				case 3:
+					this.button4.BackColor = System.Drawing.Color.MediumOrchid;
+					break;
+			}
+			Songs.Items.Add(NameFix(musics[index].Name));
 
 			index += 40;
 		}
@@ -197,7 +230,15 @@ namespace MusicPlayer
 		private void TheHUB_MouseHover(object sender, EventArgs e) => Cursor = Cursors.Hand;
 
 		private void TheHUB_MouseLeave(object sender, EventArgs e)	=> Cursor = Cursors.Default;
+
 		private void TheHUB_MouseClick(object sender, MouseEventArgs e) => System.Diagnostics.Process.Start("https://thehub-aubg.com/");
+		
+		// Youtube button
+		private void Youtube_Click(object sender, EventArgs e) => System.Diagnostics.Process.Start("https://www.youtube.com/");
+
+		private void Youtube_MouseHover(object sender, EventArgs e) => Cursor = Cursors.Hand;
+
+		private void Youtube_MouseLeave(object sender, EventArgs e) => Cursor = Cursors.Default;
 
 		// PlaySong button
 		private void PlaySong_MouseHover(object sender, EventArgs e) => Cursor = Cursors.Hand;

@@ -38,6 +38,7 @@
 			this.button4 = new System.Windows.Forms.Button();
 			this.AnswerFeedback = new System.Windows.Forms.Label();
 			this.DownloadPlaylist = new System.Windows.Forms.Button();
+			this.Youtube = new System.Windows.Forms.Label();
 			this.SuspendLayout();
 			// 
 			// Songs
@@ -45,10 +46,10 @@
 			this.Songs.Font = new System.Drawing.Font("Monotype Corsiva", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.Songs.FormattingEnabled = true;
 			this.Songs.ItemHeight = 24;
-			this.Songs.Location = new System.Drawing.Point(751, 15);
+			this.Songs.Location = new System.Drawing.Point(836, 23);
 			this.Songs.Margin = new System.Windows.Forms.Padding(4);
 			this.Songs.Name = "Songs";
-			this.Songs.Size = new System.Drawing.Size(285, 364);
+			this.Songs.Size = new System.Drawing.Size(637, 364);
 			this.Songs.TabIndex = 1;
 			this.Songs.SelectedIndexChanged += new System.EventHandler(this.Songs_SelectedIndexChanged);
 			this.Songs.MouseLeave += new System.EventHandler(this.Songs_MouseLeave);
@@ -59,7 +60,7 @@
 			this.PlaySong.BackColor = System.Drawing.Color.DarkOrange;
 			this.PlaySong.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.PlaySong.Font = new System.Drawing.Font("Viner Hand ITC", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.PlaySong.Location = new System.Drawing.Point(751, 411);
+			this.PlaySong.Location = new System.Drawing.Point(531, 372);
 			this.PlaySong.Margin = new System.Windows.Forms.Padding(4);
 			this.PlaySong.Name = "PlaySong";
 			this.PlaySong.Size = new System.Drawing.Size(287, 73);
@@ -74,7 +75,7 @@
 			// 
 			this.Greetings.AutoSize = true;
 			this.Greetings.Font = new System.Drawing.Font("Microsoft Uighur", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Greetings.Location = new System.Drawing.Point(28, 428);
+			this.Greetings.Location = new System.Drawing.Point(28, 389);
 			this.Greetings.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.Greetings.Name = "Greetings";
 			this.Greetings.Size = new System.Drawing.Size(125, 40);
@@ -86,7 +87,7 @@
 			this.TheHUB.AutoSize = true;
 			this.TheHUB.Font = new System.Drawing.Font("MS Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
 			this.TheHUB.ForeColor = System.Drawing.SystemColors.MenuHighlight;
-			this.TheHUB.Location = new System.Drawing.Point(161, 437);
+			this.TheHUB.Location = new System.Drawing.Point(161, 398);
 			this.TheHUB.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.TheHUB.Name = "TheHUB";
 			this.TheHUB.Size = new System.Drawing.Size(86, 20);
@@ -103,7 +104,7 @@
 			this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.button1.Location = new System.Drawing.Point(35, 37);
 			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(270, 85);
+			this.button1.Size = new System.Drawing.Size(331, 85);
 			this.button1.TabIndex = 8;
 			this.button1.UseVisualStyleBackColor = false;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -115,9 +116,9 @@
 			this.button2.BackColor = System.Drawing.Color.GreenYellow;
 			this.button2.FlatAppearance.BorderColor = System.Drawing.Color.Black;
 			this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button2.Location = new System.Drawing.Point(393, 37);
+			this.button2.Location = new System.Drawing.Point(454, 37);
 			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(270, 85);
+			this.button2.Size = new System.Drawing.Size(331, 85);
 			this.button2.TabIndex = 9;
 			this.button2.UseVisualStyleBackColor = false;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -129,9 +130,9 @@
 			this.button3.BackColor = System.Drawing.Color.GreenYellow;
 			this.button3.FlatAppearance.BorderColor = System.Drawing.Color.Black;
 			this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button3.Location = new System.Drawing.Point(35, 207);
+			this.button3.Location = new System.Drawing.Point(35, 168);
 			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(270, 85);
+			this.button3.Size = new System.Drawing.Size(331, 85);
 			this.button3.TabIndex = 10;
 			this.button3.UseVisualStyleBackColor = false;
 			this.button3.Click += new System.EventHandler(this.button3_Click);
@@ -143,9 +144,9 @@
 			this.button4.BackColor = System.Drawing.Color.GreenYellow;
 			this.button4.FlatAppearance.BorderColor = System.Drawing.Color.Black;
 			this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-			this.button4.Location = new System.Drawing.Point(393, 207);
+			this.button4.Location = new System.Drawing.Point(454, 168);
 			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(270, 85);
+			this.button4.Size = new System.Drawing.Size(331, 85);
 			this.button4.TabIndex = 11;
 			this.button4.UseVisualStyleBackColor = false;
 			this.button4.Click += new System.EventHandler(this.button4_Click);
@@ -157,7 +158,7 @@
 			this.AnswerFeedback.AutoSize = true;
 			this.AnswerFeedback.BackColor = System.Drawing.Color.Transparent;
 			this.AnswerFeedback.Font = new System.Drawing.Font("Bookman Old Style", 17F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-			this.AnswerFeedback.Location = new System.Drawing.Point(72, 338);
+			this.AnswerFeedback.Location = new System.Drawing.Point(80, 289);
 			this.AnswerFeedback.Name = "AnswerFeedback";
 			this.AnswerFeedback.Size = new System.Drawing.Size(15, 36);
 			this.AnswerFeedback.TabIndex = 12;
@@ -169,7 +170,7 @@
 			this.DownloadPlaylist.BackColor = System.Drawing.Color.DarkTurquoise;
 			this.DownloadPlaylist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
 			this.DownloadPlaylist.Font = new System.Drawing.Font("Nirmala UI", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.DownloadPlaylist.Location = new System.Drawing.Point(509, 411);
+			this.DownloadPlaylist.Location = new System.Drawing.Point(318, 373);
 			this.DownloadPlaylist.Name = "DownloadPlaylist";
 			this.DownloadPlaylist.Size = new System.Drawing.Size(192, 73);
 			this.DownloadPlaylist.TabIndex = 13;
@@ -179,12 +180,28 @@
 			this.DownloadPlaylist.MouseLeave += new System.EventHandler(this.DownloadPlaylist_MouseLeave);
 			this.DownloadPlaylist.MouseHover += new System.EventHandler(this.DownloadPlaylist_MouseHover);
 			// 
+			// Youtube
+			// 
+			this.Youtube.AutoSize = true;
+			this.Youtube.Font = new System.Drawing.Font("Monotype Corsiva", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.Youtube.ForeColor = System.Drawing.Color.Red;
+			this.Youtube.Location = new System.Drawing.Point(1095, 409);
+			this.Youtube.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.Youtube.Name = "Youtube";
+			this.Youtube.Size = new System.Drawing.Size(314, 37);
+			this.Youtube.TabIndex = 14;
+			this.Youtube.Text = "Music provided by YouTube";
+			this.Youtube.Click += new System.EventHandler(this.Youtube_Click);
+			this.Youtube.MouseLeave += new System.EventHandler(this.Youtube_MouseLeave);
+			this.Youtube.MouseHover += new System.EventHandler(this.Youtube_MouseHover);
+			// 
 			// MusicPlayer
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.ControlLight;
-			this.ClientSize = new System.Drawing.Size(1067, 587);
+			this.ClientSize = new System.Drawing.Size(1518, 477);
+			this.Controls.Add(this.Youtube);
 			this.Controls.Add(this.DownloadPlaylist);
 			this.Controls.Add(this.AnswerFeedback);
 			this.Controls.Add(this.button4);
@@ -197,7 +214,7 @@
 			this.Controls.Add(this.Songs);
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "MusicPlayer";
-			this.Text = "Dzhano\'s Music Player";
+			this.Text = "Lumus - Song guessing game";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -214,6 +231,7 @@
 		private System.Windows.Forms.Button button4;
 		private System.Windows.Forms.Label AnswerFeedback;
 		private System.Windows.Forms.Button DownloadPlaylist;
+		private System.Windows.Forms.Label Youtube;
 	}
 }
 
