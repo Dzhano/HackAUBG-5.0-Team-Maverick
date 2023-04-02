@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class AnswerButton : MonoBehaviour
 {
@@ -30,23 +31,25 @@ public class AnswerButton : MonoBehaviour
     public AudioSource correctFX;
     public AudioSource wrongFX;
 
-    public GameObject currentScore;
-    public int scoreValue;
+    // public GameObject currentScore;
+    // public int scoreValue;
 
-    public int bestScore;
-    public GameObject bestDisplay;
+    // public int bestScore;
+    // public GameObject bestDisplay;
     public GameObject visual001;
 
-    void Start()
-    {
-        bestScore = PlayerPrefs.GetInt("BestScoreQuiz");
-        bestDisplay.GetComponent<TextMeshProUGUI>().text = "BEST: " + bestScore;
-    }
 
-    void Update()
-    {
-        currentScore.GetComponent<TextMeshProUGUI>().text = "SCORE: " + scoreValue;
-    }
+
+    // void Start()
+    // {
+    //     bestScore = PlayerPrefs.GetInt("BestScoreQuiz");
+    //     bestDisplay.GetComponent<TextMeshProUGUI>().text = "BEST: " + bestScore;
+    // }
+
+    // void Update()
+    // {
+    //     currentScore.GetComponent<TextMeshProUGUI>().text = "SCORE: " + scoreValue;
+    // }
     public void AnswerA()
     {
         if (QuestionGenerate.actualAnswer == "A")
@@ -54,7 +57,9 @@ public class AnswerButton : MonoBehaviour
             answerABackGreen.SetActive(true);
             answerABackBlue.SetActive(false);
             correctFX.Play();
-            scoreValue += 5;
+            // scoreValue += 5;
+            Stone.steps = 1;
+            // SceneManager.UnloadScene(0);
         }
         else
         {
@@ -77,7 +82,9 @@ public class AnswerButton : MonoBehaviour
             answerBBackGreen.SetActive(true);
             answerBBackBlue.SetActive(false);
             correctFX.Play();
-            scoreValue += 5;
+            // scoreValue += 5;
+            Stone.steps = 1;
+            // SceneManager.UnloadScene(0);
         }
         else
         {
@@ -100,7 +107,9 @@ public class AnswerButton : MonoBehaviour
             answerCBackGreen.SetActive(true);
             answerCBackBlue.SetActive(false);
             correctFX.Play();
-            scoreValue += 5;
+            // scoreValue += 5;
+            Stone.steps = 1;
+            // SceneManager.UnloadScene(0);
         }
         else
         {
@@ -123,7 +132,9 @@ public class AnswerButton : MonoBehaviour
             answerDBackGreen.SetActive(true);
             answerDBackBlue.SetActive(false);
             correctFX.Play();
-            scoreValue += 5;
+            // scoreValue += 5;
+            Stone.steps = 1;
+            // SceneManager.UnloadScene(0);
         }
         else
         {
@@ -141,14 +152,15 @@ public class AnswerButton : MonoBehaviour
     
     IEnumerator NextQuestion()
     {
-        if(bestScore < scoreValue)
-        {
-            PlayerPrefs.SetInt("BestScoreQuiz", scoreValue);
-            bestScore = scoreValue;
-            bestDisplay.GetComponent<TextMeshProUGUI>().text = "BEST: " + scoreValue;
-        }
+        // if(bestScore < scoreValue)
+        // {
+        //     PlayerPrefs.SetInt("BestScoreQuiz", scoreValue);
+        //     bestScore = scoreValue;
+        //     bestDisplay.GetComponent<TextMeshProUGUI>().text = "BEST: " + scoreValue;
+        // }
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
+        
         visual001.SetActive(false);
         answerABackGreen.SetActive(false);
         answerBBackGreen.SetActive(false);
@@ -172,5 +184,6 @@ public class AnswerButton : MonoBehaviour
 
         QuestionGenerate.displayingQuestion = false;
         
+        SceneManager.UnloadScene(0);
     }
 }

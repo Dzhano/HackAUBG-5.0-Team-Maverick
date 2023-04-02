@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class QuestionDisplay : MonoBehaviour
 {
@@ -32,6 +33,7 @@ public class QuestionDisplay : MonoBehaviour
             pleaseUpdate = true;
             StartCoroutine(PushTextOnScreen());
         }
+        
     }
 
     IEnumerator PushTextOnScreen()
