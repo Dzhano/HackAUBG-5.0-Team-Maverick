@@ -16,3 +16,4 @@ D:\AUBG\Clubs\HackAUBG 5.0\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csproj.
 D:\AUBG\Clubs\HackAUBG 5.0\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.csproj.CopyComplete
 D:\AUBG\Clubs\HackAUBG 5.0\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.exe
 D:\AUBG\Clubs\HackAUBG 5.0\MusicPlayer\MusicPlayer\obj\Debug\MusicPlayer.pdb
+D:\AUBG\Clubs\HackAUBG 5.0\MusicPlayer\MusicPlayer\bin\Debug\Interop.WMPLib.dll

@@ -9,6 +9,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using WMPLib;
 
@@ -17,6 +18,7 @@ namespace MusicPlayer
     public partial class MusicPlayer : Form
 	{
 		private WindowsMediaPlayer Player;
+		private static System.Timers.Timer t;
 
 		public MusicPlayer()
         {
@@ -50,26 +52,29 @@ namespace MusicPlayer
 			}
 		}
 
-		private void PlayFile(string url)
+		private async void PlayFile(string url)
 		{
 			if (Player.playState == WMPPlayState.wmppsPlaying)
 			{
 				Player.controls.pause();
 			}
 			Player.URL = url;
-			Player.controls.play();
+			//Wait(30);
+			//Songs.Items.Add("efggewsb");
+			//Player.controls.play();
+			//Player.controls.stop();
+			Task task1 = Task.Run(() =>	Player.controls.play());
+			Task task2 = Task.Run(() => Wait(30));
+
+			await Task.WhenAll(task1, task2);
+
+			Songs.Items.Add("efggewsb");
+			Player.controls.stop();
 		}
 
-		private void MusicPlayer_Load(object sender, EventArgs e)
-        {
-            
-        }
+		private static async Task Wait(int seconds) => await Task.Delay(seconds * 1000);
 
-        private void Songs_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            // Write a code to play music
-            axWindowsMediaPlayerMusic.URL = paths[Songs.SelectedIndex];
-        }
+		private void Songs_SelectedIndexChanged(object sender, EventArgs e){ }
 
         private void Songs_MouseHover(object sender, EventArgs e)
         {
@@ -79,18 +84,6 @@ namespace MusicPlayer
         private void Songs_MouseLeave(object sender, EventArgs e)
         {
             Cursor = Cursors.Default;
-        }
-
-        private void NextSong_Button_Click(object sender, EventArgs e)
-        {
-            if (Songs.SelectedIndex < Songs.Items.Count - 1) Songs.SelectedIndex += 1;
-            else Songs.SelectedIndex = 0;
-        }
-
-        private void PreviousSong_Button_Click(object sender, EventArgs e)
-        {
-            if (Songs.SelectedIndex > 0) Songs.SelectedIndex -= 1;
-            else Songs.SelectedIndex = Songs.Items.Count - 1;
         }
 
         private void TheHUB_MouseClick(object sender, MouseEventArgs e)
@@ -108,70 +101,8 @@ namespace MusicPlayer
             Cursor = Cursors.Default;
         }
 
-        private void RJC_MouseClick(object sender, MouseEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://www.facebook.com/rjcaubg");
-        }
-
-        private void RJC_MouseHover(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-
-        private void RJC_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void AURA_MouseClick(object sender, MouseEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://radio-aura.org/");
-        }
-
-        private void AURA_MouseHover(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-
-        private void AURA_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
-        private void label_MouseClick(object sender, MouseEventArgs e)
-        {
-            System.Diagnostics.Process.Start("https://github.com/Dzhano/");
-        }
-
-        private void label_MouseHover(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Hand;
-        }
-
-        private void label_MouseLeave(object sender, EventArgs e)
-        {
-            Cursor = Cursors.Default;
-        }
-
         private void PlaySong_Click(object sender, EventArgs e)
         {
-            // Code to select song
-            //OpenFileDialog ofd = new OpenFileDialog();
-            // Code to select multiple files
-            //ofd.Multiselect = true;
-
-            /*if (ofd.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                for (int i = 0; i < ofd.SafeFileNames.Count(); i++)
-                {
-                    if (!files.Contains(ofd.SafeFileNames[i]))
-                    {
-                        files.Add(ofd.SafeFileNames[i]); // Save the names of the track in file array.
-                        paths.Add(ofd.FileNames[i]); // Save the paths of the tracks in path array.
-                        Songs.Items.Add(ofd.SafeFileNames[i]); // Display Songs in ListBox
-                    }
-                }
-            } */
             Random random = new Random();
             List<string> searchOnline = new List<string>() { "Andalusian classical music", "Indian classical music", "Korean court music", "Persian classical music", "Western classical music",
                                                             "Early music", "Medieval music", "Ars antiqu", "Ars nova",
@@ -204,7 +135,25 @@ namespace MusicPlayer
                 }
                 var rgVideos = new Regex(Patterns.VideoRendererBlock);
                 var objVideos = rgVideos.Matches(_raw);
-                foreach (Match v in objVideos)
+
+
+				string video = objVideos[0].Value;
+				Regex rgId = new Regex(Patterns.VideoName);
+				string songName = rgId.Match(video).Value;
+				rgId = new Regex(Patterns.VideoID);
+				string sID = rgId.Match(video).Value;
+				rgId = new Regex(Patterns.VideoViewCount);
+				songName += $"({rgId.Match(video).Value})";
+
+
+				files.Add(songName); // Save the names of the track in file array.
+				paths.Add(sID); // Save the paths of the tracks in path array.
+				Songs.Items.Add(songName); // Dmisplay Songs in ListBox
+				
+				ReproduceMusic(sID);
+
+
+				/*foreach (Match v in objVideos)
                 {
                     string video = v.Value;
                     Regex rgId = new Regex(Patterns.VideoName);
@@ -214,16 +163,13 @@ namespace MusicPlayer
                     rgId = new Regex(Patterns.VideoViewCount);
                     sNome += $"({rgId.Match(video).Value})";
 
-					/*lblPlaylist ll = new lblPlaylist(sID, 0, Regex.Unescape(sNome));
-                    ll.Width = alt;
-                    pnlResults.Controls.Add(ll);
-                    */
+					
 					files.Add(sNome); // Save the names of the track in file array.
 					paths.Add(sID); // Save the paths of the tracks in path array.
 					Songs.Items.Add(sNome); // Display Songs in ListBox
                     ReproduceMusic(sID);
-				}
-            }
+				}*/
+			}
         }
-    }
+	}
 }
